@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MenuItem {
+  id     Int      @id @default(autoincrement())
+  label  String?
+  to     String?
+  active Boolean?
+
+  @@map("menu_item")
+}
+
+model Advantage {
+  id          Int           @id @default(autoincrement())
+  title       String
+  description String?
+  image_url   String?
+  orientation String?       @default("horizontal")
+  links       ButtonProps[]
+
+  @@map("advantage")
+}
+
+model ButtonProps {
+  id           Int     @id @default(autoincrement())
+  label        String
+  color        String? @default("neutral")
+  variant      String? @default("subtle")
+  trailingIcon String?
+
+  advantage   Advantage? @relation(fields: [advantageId], references: [id])
+  advantageId Int?
+
+  @@map("button_props")
+}
