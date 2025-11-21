@@ -1,0 +1,11 @@
+# .dockerignore
+node_modules
+dist
+npm-debug.log
+yarn-error.log
+.git
+.gitignore
+.dockerignore
+# Если используете Docker Compose, добавьте
+docker-compose.yml
+Dockerfile
