@@ -26,10 +26,10 @@ import { PrismaService } from '../prisma/prisma.service';
                     client: prisma,
                   },
                   options: {
-                    listProperties: ['id', 'name'],
-                    editProperties: ['name'],
-                    showProperties: ['id', 'name'],
-                    filterProperties: ['name'],
+                    listProperties: ['id', 'label', 'to', 'active'],
+                    editProperties: ['label', 'to', 'active'],
+                    showProperties: ['id', 'label', 'to', 'active'],
+                    filterProperties: ['label', 'to', 'active'],
                     actions: {
                       listAll: {
                         actionType: 'resource',
