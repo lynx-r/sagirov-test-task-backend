@@ -13,11 +13,14 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
+ARG DATABASE_URL
+
+ENV DATABASE_URL=$DATABASE_URL
+
 RUN npx prisma generate
 
 # Build the NestJS application
 RUN npm run build
-
 
 # Expose the application port
 EXPOSE 3000
