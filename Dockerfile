@@ -13,10 +13,11 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
+RUN npx prisma generate
+
 # Build the NestJS application
 RUN npm run build
 
-RUN npx prisma generate
 
 # Expose the application port
 EXPOSE 3000
