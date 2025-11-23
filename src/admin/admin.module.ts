@@ -72,6 +72,12 @@ import { PrismaService } from '../prisma/prisma.service';
                     },
                   },
                 },
+                {
+                  resource: {
+                    model: getModelByName('ButtonProps'),
+                    client: prisma,
+                  },
+                },
               ],
             },
           };
